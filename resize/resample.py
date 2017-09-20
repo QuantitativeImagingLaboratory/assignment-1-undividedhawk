@@ -1,5 +1,16 @@
 #testing git
+import cv2
+
+
+def load_display(input_image):
+    cv2.namedWindow("Lenna", cv2.WINDOW_AUTOSIZE)
+    cv2.imshow("Lenna", input_image)
+    cv2.waitKey(0)
+    cv2.destroyWindow("Lenna")
+
 class resample:
+
+
 
     def resize(self, image, fx = None, fy = None, interpolation = None):
         """calls the appropriate funciton to resample an image based on the interpolation method
@@ -25,6 +36,10 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
+        (rows,cols) = image.shape
+        matrix = [[0 for i in range(cols*fy)] for j in range(rows*fx)]
+        # 𝐼~=𝐼′.𝑟𝑒𝑠𝑖𝑧𝑒(𝑤,ℎ)
+
 
         return image
 
@@ -40,4 +55,8 @@ class resample:
         # Write your code for bilinear interpolation here
 
         return image
+
+
+lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
+load_display(lenna)
 
