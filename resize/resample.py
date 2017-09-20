@@ -44,7 +44,6 @@ class resample:
             for j in range(round(cols*fy)):
                 a[i,j] = image[round(i/fx)-1,round(j/fy)-1]
         image = a
-
         return image
 
 
