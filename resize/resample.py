@@ -44,8 +44,8 @@ class resample:
                 a[i,j] = image[1-round(i/fx),1-round(j/fy)]
         image = a
 
-
         return image
+
 
 
     def bilinear_interpolation(self, image, fx, fy):
