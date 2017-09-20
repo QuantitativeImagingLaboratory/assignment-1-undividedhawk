@@ -37,11 +37,12 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
+
         (rows,cols) = image.shape
-        a = np.zeros((rows*fx,cols*fy), np.uint8)
-        for i in range(rows*fx):
-            for j in range(cols*fy):
-                a[i,j] = image[1-round(i/fx),1-round(j/fy)]
+        a = np.zeros((round(rows*fx),round(cols*fy)), np.uint8)
+        for i in range(round(rows*fx)):
+            for j in range(round(cols*fy)):
+                a[i,j] = image[round(i/fx)-1,round(j/fy)-1]
         image = a
 
         return image
@@ -62,6 +63,7 @@ class resample:
 
 resample = resample()
 lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
-
+load_display(resample.resize(lenna,.5,.5,'nearest_neighbor'))
+load_display(lenna)
 
 
