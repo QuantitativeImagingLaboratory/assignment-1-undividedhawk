@@ -1,5 +1,6 @@
 #testing git
 import cv2
+import numpy as np
 
 
 def load_display(input_image):
@@ -37,8 +38,11 @@ class resample:
 
         #Write your code for nearest neighbor interpolation here
         (rows,cols) = image.shape
-        matrix = [[0 for i in range(cols*fy)] for j in range(rows*fx)]
-        # 𝐼~=𝐼′.𝑟𝑒𝑠𝑖𝑧𝑒(𝑤,ℎ)
+        a = np.zeros((rows*fx,cols*fy), np.uint8)
+        for i in range(rows*fx):
+            for j in range(cols*fy):
+                a[i,j] = image[1-round(i/fx),1-round(j/fy)]
+        image = a
 
 
         return image
@@ -56,7 +60,8 @@ class resample:
 
         return image
 
-
+resample = resample()
 lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
-load_display(lenna)
+
+
 
