@@ -3,11 +3,7 @@ import cv2
 import numpy as np
 
 
-def load_display(input_image):
-    cv2.namedWindow("Lenna", cv2.WINDOW_AUTOSIZE)
-    cv2.imshow("Lenna", input_image)
-    cv2.waitKey(0)
-    cv2.destroyWindow("Lenna")
+
 
 class resample:
 
@@ -37,14 +33,16 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
+        image = cv2.imread(image ,0)
 
         (rows,cols) = image.shape
         a = np.zeros((round(rows*fx),round(cols*fy)), np.uint8)
         for i in range(round(rows*fx)):
             for j in range(round(cols*fy)):
                 a[i,j] = image[round(i/fx)-1,round(j/fy)-1]
-        image = a
+        image = a.copy()
         return image
+
 
 
 
@@ -60,9 +58,6 @@ class resample:
 
         return image
 
-resample = resample()
-lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
-load_display(resample.resize(lenna,.5,.5,'nearest_neighbor'))
-load_display(lenna)
+
 
 
