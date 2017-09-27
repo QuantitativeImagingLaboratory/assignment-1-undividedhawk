@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67f7eb85-03b1-434d-846a-fe49567d69cb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dip_hw1_resize.py" afterPath="$PROJECT_DIR$/dip_hw1_resize.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resize/resample.py" afterPath="$PROJECT_DIR$/resize/resample.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="resample.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="resample.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resize/resample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -27,10 +25,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dip_hw1_resize.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dip_hw1_resize.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dip_hw1_resize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="1394">
               <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
               <folding>
                 <element signature="e#307#317#0" expanded="true" />
@@ -458,22 +456,22 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dip_hw1_resize.py">
+    <entry file="file://$PROJECT_DIR$/resize/resample.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#307#317#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resize/resample.py">
+    <entry file="file://$PROJECT_DIR$/dip_hw1_resize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="1394">
+          <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#307#317#0" expanded="true" />
           </folding>
         </state>
       </provider>

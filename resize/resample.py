@@ -36,7 +36,7 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
-
+        image = cv2.imread(image)
         (width, height) = image.shape
         newWid = int(round(width * fx))
         newHt = int(round(height * fy))
@@ -69,7 +69,7 @@ class resample:
 
         return image
 
-lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
-resample = resample()
-load_display(resample.nearest_neighbor(lenna, 1.5, 1.5))
-load_display(lenna)
+#lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
+#resample = resample()
+#load_display(resample.nearest_neighbor(lenna, 1.5, 1.5))
+#load_display(lenna)
