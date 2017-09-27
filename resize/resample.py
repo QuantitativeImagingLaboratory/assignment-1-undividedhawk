@@ -36,11 +36,10 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
-        image = cv2.imread(image)
-        (width, height) = image.shape
+        (width, height) = self.shape
         newWid = int(round(width * fx))
         newHt = int(round(height * fy))
-        target = np.zeros((newWid, newHt), np.uint8)
+        image = np.zeros((newWid, newHt), np.uint8)
 
         for x in range(newWid):
             for y in range(newHt):
@@ -48,10 +47,10 @@ class resample:
                 srcY = int(round(float(y) / float(newHt) * float(height)))
                 srcX = min(srcX, width - 1)
                 srcY = min(srcY, height - 1)
-                srcColor = image[srcX][srcY]
-                target[x][y] = srcColor
+                srcColor = self[srcX][srcY]
+                image[x][y] = srcColor
 
-        return target
+        return image
 
 
 
