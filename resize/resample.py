@@ -36,7 +36,7 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
-        image = cv2.imread(self,0)
+        image = cv2.imread(self.data, 0)
         (width, height) = image.shape
         newWid = int(round(width * fx))
         newHt = int(round(height * fy))
