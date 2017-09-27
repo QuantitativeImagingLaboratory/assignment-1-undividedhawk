@@ -1,8 +1,11 @@
-#testing git
 import cv2
 import numpy as np
 
-
+def load_display(image):
+    cv2.namedWindow("Lenna", cv2.WINDOW_AUTOSIZE)
+    cv2.imshow("Lenna", image)
+    cv2.waitKey(0)
+    cv2.destroyWindow("Lenna")
 
 
 class resample:
@@ -33,16 +36,22 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
-        image = cv2.imread(image ,0)
 
-        (rows,cols) = image.shape
-        a = np.zeros((round(rows*fx),round(cols*fy)), np.uint8)
-        for i in range(round(rows*fx)):
-            for j in range(round(cols*fy)):
-                a[i,j] = image[round(i/fx)-1,round(j/fy)-1]
-        image = a.copy()
-        return image
+        (width, height) = image.shape
+        newWid = int(round(width * fx))
+        newHt = int(round(height * fy))
+        target = np.zeros((newWid, newHt), np.uint8)
 
+        for x in range(newWid):
+            for y in range(newHt):
+                srcX = int(round(float(x) / float(newWid) * float(width)))
+                srcY = int(round(float(y) / float(newHt) * float(height)))
+                srcX = min(srcX, width - 1)
+                srcY = min(srcY, height - 1)
+                srcColor = image[srcX][srcY]
+                target[x][y] = srcColor
+
+        return target
 
 
 
@@ -55,9 +64,12 @@ class resample:
         """
 
         # Write your code for bilinear interpolation here
+        (rows,cols) = image.shape
+        a = np.zeros((round(rows*fx),round(cols*fy)),np.uint8)
 
         return image
 
-
-
-
+lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
+resample = resample()
+load_display(resample.nearest_neighbor(lenna, 1.5, 1.5))
+load_display(lenna)
