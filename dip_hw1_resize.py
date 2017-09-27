@@ -82,17 +82,15 @@ def main():
 
     resample_obj = rs.resample()
     resampled_image = resample_obj.resize(input_image, fx=fx, fy=fy, interpolation=interpolation)
-
     #Write output file
     outputDir = 'output/resize/'
 
     output_image_name = outputDir+image_name+interpolation+datetime.now().strftime("%m%d-%H%M%S")+".jpg"    
     cv2.imwrite(output_image_name, resampled_image)
-    display_image('lenna',output_image_name)
+    display_image('lenna',resampled_image)
 
 if __name__ == "__main__":
     main()
-
 
 
 

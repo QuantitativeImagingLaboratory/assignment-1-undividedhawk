@@ -36,9 +36,10 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
+        load_display(image)
         (width, height) = image.shape
-        width = float(width)
-        height = float(height)
+        width = int(width)
+        height = int(height)
         fx = float(fx)
         fy = float(fy)
         newWid = round(width * fx)
@@ -49,8 +50,8 @@ class resample:
             for y in range(newHt):
                 srcX = int(round(float(x) / float(newWid) * float(width)))
                 srcY = int(round(float(y) / float(newHt) * float(height)))
-                srcX = min(srcX, width - 1)
-                srcY = min(srcY, height - 1)
+                srcX = int(min(srcX, width - 1))
+                srcY = int(min(srcY, height - 1))
                 srcColor = image[srcX][srcY]
                 image2[x][y] = srcColor
         image2 = image.copy()
