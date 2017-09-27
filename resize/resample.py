@@ -37,8 +37,10 @@ class resample:
 
         #Write your code for nearest neighbor interpolation here
         (width, height) = image.shape
-        width = int(width)
-        height = int(height)
+        width = float(width)
+        height = float(height)
+        fx = float(fx)
+        fy = float(fy)
         newWid = round(width * fx)
         newHt = round(height * fy)
         image2 = np.zeros((newWid, newHt), np.uint8)

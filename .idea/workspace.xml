@@ -16,8 +16,8 @@
       <file leaf-file-name="resample.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resize/resample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+            <state relative-caret-position="493">
+              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -28,7 +28,7 @@
       <file leaf-file-name="dip_hw1_resize.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dip_hw1_resize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
+            <state relative-caret-position="731">
               <caret line="76" column="63" lean-forward="true" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
               <folding>
                 <element signature="e#307#317#0" expanded="true" />
@@ -458,7 +458,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dip_hw1_resize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
+        <state relative-caret-position="731">
           <caret line="76" column="63" lean-forward="true" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
           <folding>
             <element signature="e#307#317#0" expanded="true" />
@@ -468,8 +468,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resize/resample.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+        <state relative-caret-position="493">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
