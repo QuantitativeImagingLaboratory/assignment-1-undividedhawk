@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-
 def load_display(image):
     cv2.namedWindow("Lenna", cv2.WINDOW_AUTOSIZE)
     cv2.imshow("Lenna", image)
@@ -36,7 +35,6 @@ class resample:
         """
 
         #Write your code for nearest neighbor interpolation here
-        load_display(image)
         (width, height) = image.shape
         width = int(width)
         height = int(height)
@@ -54,7 +52,6 @@ class resample:
                 srcY = int(min(srcY, height - 1))
                 srcColor = image[srcX][srcY]
                 image2[x][y] = srcColor
-        image2 = image.copy()
         return image2
 
 
@@ -68,10 +65,31 @@ class resample:
         """
 
         # Write your code for bilinear interpolation here
-        (rows,cols) = image.shape
-        a = np.zeros((round(rows*fx),round(cols*fy)),np.uint8)
+        (width, height) = image.shape
+        width = int(width)
+        height = int(height)
+        fx = float(fx)
+        fy = float(fy)
+        newWid = round(width * fx)
+        newHt = round(height * fy)
+        image2 = np.zeros((newWid, newHt), np.uint8)
+        image3 = np.resize(image2,(width,height))
+        for x in range(newWid):
+            for y in range(newHt):
+                z00 = image[x][y]
+                z01 = image[x][y+2]
+                z10 = image[x+2][y]
+                z11 = image[x+2][y+2]
+                r0 = (((y+2 - y+1) / (y+2 - y))* z10) + (((y+1 - y) / (y+2 - y))*z11)
+                c0 = (((y+2 - y+1) / (y+2 - y))* z00) + (((y+1 - y) / (y+2 - y))*z01)
+                image3[x][y] = (r0*((x - x+1)/(x - x+2))) + (c0*((x+1 - x+2)/(x - x+2)))
+                if image3[x][y] > 255:
+                    image3[x][y] =
+        image2 = np.resize(image3, (newWid,newHt))
 
-        return image
+        return image2
+
+
 
 #lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
 #resample = resample()

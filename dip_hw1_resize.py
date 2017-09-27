@@ -87,7 +87,7 @@ def main():
 
     output_image_name = outputDir+image_name+interpolation+datetime.now().strftime("%m%d-%H%M%S")+".jpg"    
     cv2.imwrite(output_image_name, resampled_image)
-    display_image('lenna',resampled_image)
+    #display_image('lenna',resampled_image)
 
 if __name__ == "__main__":
     main()
