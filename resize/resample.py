@@ -1,11 +1,7 @@
 import cv2
 import numpy as np
 import math
-def load_display(image):
-    cv2.namedWindow("Lenna", cv2.WINDOW_AUTOSIZE)
-    cv2.imshow("Lenna", image)
-    cv2.waitKey(0)
-    cv2.destroyWindow("Lenna")
+
 
 
 class resample:
@@ -66,38 +62,42 @@ class resample:
         """
 
         # Write your code for bilinear interpolation here
-        (rows,cols) = image.shape
+
+        (rows, cols) = image.shape
         rows = int(rows)
         cols = int(cols)
         fx = float(fx)
         fy = float(fy)
         newRows = int(round(rows*fx))
         newCols = int(round(cols*fy))
-        image2 = np.zeros((newRows,newCols), np.uint8)
-        for x in range(newRows):
-            for y in range(newCols):
-                i = x/fx
-                j = y/fy
-                r = int(np.floor(i))
-                c = int(np.floor(j))
-                if r < 0:
-                    r = 0
-                elif c < 0:
-                    c = 0
-                if r > rows:
-                    r = rows
-                elif c > cols:
-                    c = cols
-                srcColor1 = image[r][c]
-                srcColor2 = image[r+1][c]
-                srcColor3 = image[r][c+1]
-                srcColor4 = image[r+1][c+1]
-                r0 = (abs(math.sin(((c+1 - y)/(c+1 - c))))*srcColor2) + (abs(math.sin((y-c)/(c+1-c)))*srcColor4)
-                r1 = (abs(math.sin(((c+1-y)/(c+1-c))))*srcColor1) + (abs(math.sin((y-c)/(c+1-c)))*srcColor3)
-                image2[x][y] = (abs(math.cos(((r-x)/(r-r+1))))*r0) + (abs(math.cos((x-r+1)/(r-r+1)))*r1)
+        image2 = np.zeros((newRows,newCols),np.uint8)
+        for i in range(newRows):
+            for j in range(newCols):
+                r = j/fx
+                c = i/fy
+                xc = math.ceil(r)
+                xf = math.floor(r)
+                yc = math.ceil(c)
+                yf = math.floor(c)
+
+                wxc = xc - r
+                wxf = r - xf
+                wyc = yc - c
+                wyf = c - yf
+
+                if wxc == 0 or wyc == 0:
+                    r0 = image[yf,xf]
+                    r1 = 0
+                elif wyc == 0 or wyf == 0:
+                    r0 = image[yf,xf]
+                    r1 = 0
+                else:
+                    r0 = wxc * (wyc * image[yf, xf] + wyf * image[yc, xf])
+                    r1 = wxf * (wyc * image[yf, xc] + wyf * image[yc, xc])
+                image2[i, j] = 0 + (r0 + r1)
 
         return image2
-#lenna = cv2.imread("C:\\Users\\Brad\\Desktop\\UH Fall 2017\\Digital Image Processing\\Assignment_1\\cell2.jpg", 0)
-#resample = resample()
-#load_display(resample.nearest_neighbor(lenna, 1.5, 1.5))
-#load_display(lenna)
+
+
+
+

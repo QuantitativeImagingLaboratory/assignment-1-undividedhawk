@@ -75,7 +75,7 @@ def main():
     cell_stats_img = cell_count_obj.mark_regions_image(binary_img, stats)
     output_image_name = outputDir + "cell_stats_" + datetime.now().strftime("%m%d-%H%M%S") + ".jpg"
     cv2.imwrite(output_image_name, cell_stats_img)
-
+    display_image('lenna', binary_img)
 
 
 if __name__ == "__main__":
