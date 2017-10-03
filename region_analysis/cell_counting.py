@@ -16,22 +16,22 @@ class cell_counting:
                     if image[i][j] == 0:
                         regions[i,j] = k
                         k+=1
-                elif i == 0 and j != 0:
+                if i == 0 and j != 0:
                     if image[i][j] == 0 and image[i][j-1] == 0:
                         regions[i,j] = regions[i,j-1]
-                elif j == 0 and i !=0:
+                if j == 0 and i !=0:
                     if image[i][j] == 0 and image[i-1][j] == 0:
                         regions[i,j] = regions[i-1,j]
-                elif image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 255:
+                if image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 255:
                     regions[i,j] = k
                     k += 1
-                elif image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 0:
+                if image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 0:
                     regions[i,j] = regions[i-1,j]
 
-                elif image[i][j] == 0 and image[i][j-1] == 0 and image[i-1][j] == 255:
+                if image[i][j] == 0 and image[i][j-1] == 0 and image[i-1][j] == 255:
                     regions[i,j] = regions[i,j-1]
 
-                elif image[i][j] == 0 and image[i][j-1] == 0 and image[i-1][j] == 0:
+                if image[i][j] == 0 and image[i][j-1] == 0 and image[i-1][j] == 0:
                     regions[i,j] = regions[i-1,j]
                     if regions[i,j-1] != regions[i-1,j]:
                         regions[i,j-1] = regions[i-1,j]
@@ -75,13 +75,15 @@ class cell_counting:
             centroid_x = round((x_coord[z]/len(x_coord)))
             centroid_y = round((y_coord[z]/len(y_coord)))
             centroid[z] = (centroid_x, centroid_y)
-
+        stats={}
         q = dict(zip(l[:len(centroid)],centroid[:len(x_coord)]))
         i = 0
         for k,v in b.items():
-            if b[k] < 15:
-                sys.stdout.write('Region: ' + str(k) + ', Area: ' + str(b[k]) + ', Centroid: ' + str(q[k]))
-                print('ignored')
+            if b[k] >= 15:
+                stats[k] = q[k], b[k]
+        print(stats,end='\n',file= sys.stdout)
+                #stats = sys.stdout.write('Region: ' + str(k) + ', Area: ' + str(b[k]) + ', Centroid: ' + str(q[k]))
+                #print(stats)
         # Please print your region statistics to stdout
         # <region number>: <location or center>, <area>
         # print(stats)
@@ -94,6 +96,9 @@ class cell_counting:
         image: a list of pixels in a region
         stats: stats regarding location and area
         returns: image marked with center and area"""
-
-        return image
+        if __name__ == '__main__':
+            for k,v in stats.items():
+                if stats[k][1] > 15:
+                    print('oh no')
+            return image
 
