@@ -16,10 +16,10 @@ class cell_counting:
                     if image[i][j] == 0:
                         regions[i,j] = k
                         k+=1
-                if i == 0:
+                elif i == 0:
                     if image[i][j] == 0 and image[i][j-1] == 0:
                         regions[i][j] = regions[i][j-1]
-                if j == 0:
+                elif j == 0:
                     if image[i][j] == 0 and image[i-1][j] == 0:
                         regions[i][j] = regions[i-1][j]
                 elif image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 255:
