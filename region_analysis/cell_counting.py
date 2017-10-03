@@ -1,3 +1,4 @@
+import sys
 class cell_counting:
 
     def blob_coloring(self, image):
@@ -26,6 +27,7 @@ class cell_counting:
                         regions[i,j-1] = regions[i-1,j]
 
 
+
         return regions
 
     def compute_statistics(self, region):
@@ -34,7 +36,41 @@ class cell_counting:
         region: a list of pixels in a region
         returns: area"""
 
+        b = {}
+        x_coord=[]
+        y_coord=[]
+        i = 0
+        l = []
+        for k,v in region.items():
 
+            if not v in b:
+                l.insert(i,v)
+                b[v] = 1
+                x_coord.insert(i,k[0])
+                y_coord.insert(i,k[1])
+                i += 1
+
+            else:
+                b[v] +=1
+                u = x_coord.pop()
+                v = y_coord.pop()
+                x_coord.insert(i,u+k[0])
+                y_coord.insert(i,v+k[1])
+
+        centroid = len(x_coord)*[0]
+
+
+
+        for z in range(len(x_coord)):
+            centroid_x = round((x_coord[z]/len(x_coord)))
+            centroid_y = round((y_coord[z]/len(y_coord)))
+            centroid[z] = (centroid_x, centroid_y)
+
+        q = dict(zip(l[:len(centroid)],centroid[:len(x_coord)]))
+        i = 0
+        for k,v in b.items():
+            if b[k] >= 15:
+                sys.stdout.write('Region: ' + str(k) + ', Area: ' + str(b[k]) + ', Centroid: ' + str(q[k]))
 
         # Please print your region statistics to stdout
         # <region number>: <location or center>, <area>
