@@ -77,7 +77,7 @@ def main():
     cv2.imwrite(output_image_name, cell_stats_img)
     hist = plt.plot(hist)
     plt.show(hist)
-    #display_image('lenna',binary_img)
+    #display_image('lenna',cell_stats_img)
 
 if __name__ == "__main__":
     main()

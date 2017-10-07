@@ -1,4 +1,5 @@
 import sys
+import cv2
 class cell_counting:
 
     def blob_coloring(self, image):
@@ -81,7 +82,8 @@ class cell_counting:
         for k,v in b.items():
             if b[k] >= 15:
                 stats[k] = q[k], b[k]
-        print(stats,end='\n',file= sys.stdout)
+                print('Region: ' + str(k) + ', Centroid: ' + str(stats[k][0]) + ', Area: ' + str(stats[k][1]))
+
                 #stats = sys.stdout.write('Region: ' + str(k) + ', Area: ' + str(b[k]) + ', Centroid: ' + str(q[k]))
                 #print(stats)
         # Please print your region statistics to stdout
@@ -96,9 +98,11 @@ class cell_counting:
         image: a list of pixels in a region
         stats: stats regarding location and area
         returns: image marked with center and area"""
+        for k in range(stats):
+            cv2.putText(image, str(k), stats[k][0], cv2.FONT_HERSHEY_COMPLEX, 1, 255)
         if __name__ == '__main__':
-            for k,v in stats.items():
-                if stats[k][1] > 15:
-                    print('oh no')
+
+
             return image
+
 
