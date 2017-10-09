@@ -70,15 +70,16 @@ class resample:
         fy = float(fy)
         newRows = int(round(rows*fx))
         newCols = int(round(cols*fy))
+
         image2 = np.zeros((newRows,newCols),np.uint8)
-        for i in range(newRows):
-            for j in range(newCols):
-                r = j/fx
-                c = i/fy
-                xc = math.ceil(r)
-                xf = math.floor(r)
-                yc = math.ceil(c)
-                yf = math.floor(c)
+        for i in range(newRows - 1):
+            for j in range(newCols - 1):
+                r = j / fy
+                c = i / fx
+                xc = int(math.ceil(r))
+                xf = int(math.floor(r))
+                yc = int(math.ceil(c))
+                yf = int(math.floor(c))
 
                 wxc = xc - r
                 wxf = r - xf
@@ -92,8 +93,8 @@ class resample:
                     r0 = image[yf,xf]
                     r1 = 0
                 else:
-                    r0 = wxc * (wyc * image[yf, xf] + wyf * image[yc, xf])
-                    r1 = wxf * (wyc * image[yf, xc] + wyf * image[yc, xc])
+                    r0 = np.around(wxc * (wyc * image[yf, xf] + wyf * image[yc, xf]), 0)
+                    r1 = np.around(wxf * (wyc * image[yf, xc] + wyf * image[yc, xc]), 0)
                 image2[i, j] = 0 + (r0 + r1)
 
         return image2

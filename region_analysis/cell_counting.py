@@ -7,22 +7,16 @@ class cell_counting:
         takes a input:
         image: binary image
         return: a list of regions"""
-
+        (rows, cols) = image.shape
         regions = dict()
-        k = 1
-        (rows,cols) = image.shape
         for i in range(rows):
             for j in range(cols):
-                if i == 0 and j == 0:
-                    if image[i][j] == 0:
-                        regions[i,j] = k
-                        k+=1
-                if i == 0 and j != 0:
-                    if image[i][j] == 0 and image[i][j-1] == 0:
-                        regions[i,j] = regions[i,j-1]
-                if j == 0 and i !=0:
-                    if image[i][j] == 0 and image[i-1][j] == 0:
-                        regions[i,j] = regions[i-1,j]
+                regions[i,j] = 0
+        k = 1
+
+        for i in range(rows):
+            for j in range(cols):
+
                 if image[i][j] == 0 and image[i][j-1] == 255 and image[i-1][j] == 255:
                     regions[i,j] = k
                     k += 1
@@ -46,51 +40,59 @@ class cell_counting:
         takes as input
         region: a list of pixels in a region
         returns: area"""
-
+        stats = dict()
         b = {}
         x_coord=[]
         y_coord=[]
         i = 0
         l = []
+        counter = []
+        counter2 = 1
         for k,v in region.items():
 
             if not v in b:
-                l.insert(i,v)
+                l.append(v)
                 b[v] = 1
-                x_coord.insert(i,k[0])
-                y_coord.insert(i,k[1])
+                x_coord.append(k[0])
+                y_coord.append(k[1])
+                counter.append(1)
                 i += 1
 
             else:
                 b[v] +=1
                 u = x_coord.pop()
-                v = y_coord.pop()
-                x_coord.insert(i,u+k[0])
-                y_coord.insert(i,v+k[1])
+                z = y_coord.pop()
+
+                counter2 += 1
+
+                x_coord.append(u+k[0])
+                y_coord.append(z+k[1])
 
         centroid = len(x_coord)*[0]
 
 
 
-        for z in range(len(x_coord)):
-            centroid_x = round((x_coord[z]/len(x_coord)))
-            centroid_y = round((y_coord[z]/len(y_coord)))
-            centroid[z] = (centroid_x, centroid_y)
-        stats={}
+        for ele in range(0,len(x_coord)):
+            centroid_x = round((x_coord[ele]/len(x_coord)))
+            centroid_y = round((y_coord[ele]/len(y_coord)))
+            centroid[ele] = (centroid_x, centroid_y)
+
+
         q = dict(zip(l[:len(centroid)],centroid[:len(x_coord)]))
-        i = 0
+        print('q:')
+        print(q)
+
         for k,v in b.items():
             if b[k] >= 15:
                 stats[k] = q[k], b[k]
                 print('Region: ' + str(k) + ', Centroid: ' + str(stats[k][0]) + ', Area: ' + str(stats[k][1]))
+        print(stats)
 
-                #stats = sys.stdout.write('Region: ' + str(k) + ', Area: ' + str(b[k]) + ', Centroid: ' + str(q[k]))
-                #print(stats)
         # Please print your region statistics to stdout
         # <region number>: <location or center>, <area>
         # print(stats)
 
-        return 0
+        return stats
 
     def mark_regions_image(self, image, stats):
         """Creates a new image with computed stats
@@ -98,11 +100,12 @@ class cell_counting:
         image: a list of pixels in a region
         stats: stats regarding location and area
         returns: image marked with center and area"""
-        for k in range(stats):
+        for k, v in stats.items():
+            cv2.putText(image, '*', stats[k][0], cv2.FONT_HERSHEY_COMPLEX, 1, 255)
             cv2.putText(image, str(k), stats[k][0], cv2.FONT_HERSHEY_COMPLEX, 1, 255)
-        if __name__ == '__main__':
+            cv2.putText(image, str(stats[k][1]), stats[k][0], cv2.FONT_HERSHEY_COMPLEX, 1, 255)
+        return image
 
 
-            return image
 
 
