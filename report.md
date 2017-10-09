@@ -12,3 +12,14 @@ the original image. I repeated this process for the elements y/fy aswell. If x/f
 x_coordinates floor, y_coordinates ceiling, and y_coordinates floor; respectively. I then multiplied those weighted values by the corresponding known pixel values 
 according to the bilinear interpolation formula and assigned those new pixel values to the cooresponding element in image2. The resultant image is the image formed from
 scaling the original image by fx and fy using the bilinear interpolation algorithm.
+
+
+2. Region Counting:
+
+binarize image: for my binarization method I used a histogram model to generate all the frequencies of pixel values. I then found the threshold of that histogram using the 
+given formula and iterated throughout the image assiging a pixel value of 0 if the pixel value was less than the threshold and a pixel value of 255 is the pixel value
+was greater than the threshold. The result is a black and white binary image.
+
+Blob coloring: In my blob coloring method I iterated through the binarized image and assigned the i,j element a unique integer value k based on the value to the left
+and above the pixel value being inspected. The result is a list of all the unique regions of the binarized image.
+
